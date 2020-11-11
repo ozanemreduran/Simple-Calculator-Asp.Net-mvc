@@ -1,0 +1,47 @@
+﻿@model IEnumerable<HesapMakinesi.Models.Gecmis>
+@using HesapMakinesi.Models;
+@{
+    ViewBag.Title = "Gecmis";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div align="center"> <!--form baslatıldı ve de usıng sayesınde kapatma ıslemıne gerek kalmadı-->
+        <h2>Gecmis</h2>@using (Html.BeginForm()) {
+        <input type="datetime-local" name="firstDate" value="yyyy/M/dd hh:mm" />
+        <input type="datetime-local" name="secondDate" value="yyyy/M/dd hh:mm" />
+        <input type="submit" name="search" value="Filtrele" />
+        }
+        <table class="table">
+            <tr>
+                <th>Tarih</th>
+                <th>Sayi 1</th>
+                <th>Sayi 2</th>
+                <th>Sonuc</th>
+                <th>İslemler</th>
+
+            </tr>
+            @foreach (Gecmis gecmis in @Model)
+            {
+                <tr>
+                    <td>@gecmis.tarih</td>
+                    <td>@gecmis.sayi1</td>
+                    <td>@gecmis.sayi2</td>
+                    <td>@gecmis.islemler</td>
+                    <td>@gecmis.sonuc</td>
+                </tr>
+            }
+        </table>
+
+    </div>
+    </body>
+</html>
